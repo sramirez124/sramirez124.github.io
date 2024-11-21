@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";
 import "dotenv/config"
+import axios from 'axios';
 
 function Fetch() {
-    const API_Key = process.env.API_Key
-    const Fetch = () => {
-        const [data, setData] = useState([])
-        useEffect(() => {
-            fetch(`http://www.ctabustracker.com/bustime/api/v2/gettime?key=${API_Key}`)
-        })
-    }
+    const API_KEY = process.env.API_KEY
+    const API_URL = 'https://www.ctabustracker.com/bustime/api/v2';
+
+    const Fetch = axios.create({
+    baseURL: API_URL,
+    params: {
+        key: API_KEY,
+    },
+    });
 }
 
 export default Fetch
